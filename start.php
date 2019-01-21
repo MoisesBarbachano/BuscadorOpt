@@ -9,15 +9,15 @@ for ($i = 0; $i < 3; $i++) {
     $feed->init();
 
     $new = array();
-    
+
     foreach ($feed->get_items() as $item) {
-    
+
         $yesterday = time() - (24*60*60);
         if ($item->get_date('U') > $yesterday) {
             $new[] = $item;
         }
     }
-    
+
     $servername = "localhost";
     $database = "inforss";
     $username = "root";
@@ -39,7 +39,3 @@ for ($i = 0; $i < 3; $i++) {
         }
     }
 }
-
-
-
-
