@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap3-typeahead.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>    
     <title>RSS</title>
 </head>
 <body>
@@ -54,9 +54,11 @@ if ($mysqli->connect_errno) {
 }
 
 if ($resultado = $mysqli->query("SELECT * FROM news_rss")) {
-    echo '<div id="principal">';
+    echo '<form id="principal" method="post" action="generarDocXls.php">';       
+    echo '<input type="submit" name="submit" class="btn btn-primary" value= "Exportar noticias seleccionadas">';
     while($row = $resultado->fetch_assoc()){
         echo '<div>';
+        echo '<input type="checkbox" name="id[]" value= "'.$row['id'].'">';
         echo '<h3>' . $row['title'] . '</h3>';
         echo '<p>' . $row['date'] . '</p>';
         echo '<p>'.$row['description'].'</p>';
@@ -64,8 +66,9 @@ if ($resultado = $mysqli->query("SELECT * FROM news_rss")) {
         echo '<hr />';
         echo '</div>';
         //$index++;
-    }
-    echo '</div>';
+    }    
+    
+    echo '</form>';
     $resultado->close();
 }
 
@@ -73,8 +76,9 @@ if(isset($_POST['clave'])){
     if ($resultado = $mysqli->query("SELECT * FROM news_rss WHERE title LIKE '%".$_POST['clave']."%'")) {
         echo '<script>var div = document.getElementById(\'principal\'); div.remove() </script>';
         echo '<div id="principal">';
-        while($row = $resultado->fetch_assoc()){
+        while($row = $resultado->fetch_assoc()){            
             echo '<div>';
+            echo '<input type="checkbox">';
             echo '<h3>' . $row['title'] . '</h3>';
             echo '<p>' . $row['date'] . '</p>';
             echo '<p>'.$row['description'].'</p>';
