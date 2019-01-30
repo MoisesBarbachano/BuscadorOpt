@@ -39,7 +39,7 @@
             }            
         }
         $output .= '</table>';   
-        header("Content-Type: application/xls");
+        header("Content-Type: application/xls, charset=UTF-8");
         header("Content-Disposition:attachment; filename= download.xls");
         echo $output;
     }
