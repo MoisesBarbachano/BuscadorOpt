@@ -7,39 +7,53 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="bootstrap-4.2.1-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="index.css">
+    
     <title>RSS</title>
 </head>
 
 <body>
-    <div class="container">
-        <h2>Buscador de Noticias RSS</h2>
-        <form style="text-align:center" class="row justify-content-md-center" action="view.php" method="post">
-            <div class="col-md">
-                <button class="btn btn-success" type="submit">Mostrar todas las noticias</button>
-            </div>
-        </form>
-        <br /><br />
-        <form action="view.php" id="form-search" method="post">
-            <div class="container">
-                <div class="row">
-                    <div class="col-10">
-                        <label>Palabra Clave:</label>
-                        <input type="text" id="clave" name="clave" class="form-control form-control-sm" placeholder="Articulo Buscar"
-                            autocomplete="off" />
-                    </div>
-                    <div class="col-2" style="margin-top:30px">
-                        <button id="search" type="button" class="btn btn-warning">
-                            Search <img id="search-icon" src="magnifier.svg" alt="">
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        
+        <a class="navbar-brand" href= "#">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Feed-icon.svg/1200px-Feed-icon.svg.png" width="30" height="30" alt="">
+            Buscador de Noticias RSS
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        <form class="row justify-content-md-center" action="view.php" method="post">                        
+                                <button class="btn btn-dark" type="submit">Mostrar todas las noticias</button>                       
+                        </form>
+                        <span class="sr-only">(current)</span> 
+                    </a>
+                    
+                </li>
+                
+            </ul>
+                                
+            <form class="form-inline my-2 my-lg-0" action="view.php" id="form-search" method="post">
+                   
+                <input type="text" id="clave" name="clave" class="form-control mr-sm-2" placeholder="Buscar artículo"
+                autocomplete="off" size="80"/>
+            
+                <button id="search" type="button" class="btn btn-warning my-2 my-sm-0">
+                    Buscar <img id="search-icon" src="magnifier.svg" alt="">
+                </button>   
+
+            </form>             
+        </div>        
+     </nav>          
 </body>
 
 <script src="js/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 <script src="js/bootstrap3-typeahead.min.js"></script>
 <script src="view.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 </html>
