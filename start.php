@@ -1,11 +1,9 @@
 <?php
 require_once 'autoloader.php';
-$urls = array("https://www.debate.com.mx/rss/feed.xml",
-"https://www.reforma.com/rss/portada.xml","https://vanguardia.com.mx/rss.xml");
-for ($i = 0; $i < 3; $i++) {
+$urls = array("http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml");
+for ($i = 0; $i < 1; $i++) {
     $feed = new SimplePie();
     $feed->set_feed_url($urls[$i]);
-    $feed->enable_cache();
     $feed->init();
 
     $new = array();
