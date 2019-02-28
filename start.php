@@ -1,6 +1,6 @@
 <?php
 require_once 'autoloader.php';
-$urls = array("http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml");
+$urls = array("http://feeds.bbci.co.uk/news/world/rss.xml");
 for ($i = 0; $i < 1; $i++) {
     $feed = new SimplePie();
     $feed->set_feed_url($urls[$i]);
@@ -12,8 +12,9 @@ for ($i = 0; $i < 1; $i++) {
 
         $yesterday = time() - (24*60*60);
         if ($item->get_date('U') > $yesterday) {
-            $new[] = $item;
         }
+        
+        $new[] = $item;
     }
 
     $servername = "localhost";
