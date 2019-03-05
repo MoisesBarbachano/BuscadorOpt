@@ -1,7 +1,6 @@
 <?php
 
 include "conexion.php";
-
 if (isset($_POST['query'])) {
 
     $respuesta = mysqli_real_escape_string($cn, $_POST['query']);

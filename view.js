@@ -55,8 +55,17 @@ $(document).ready(function () {
             var anios = new Array();
             //Años
             for (let index = 0; index < fechas.length; index++) {
-                if (!anios.includes(fechas[index].slice(7, 11))) {
-                    anios.push(fechas[index].slice(7, 11));
+                var anioFecha = fechas[index].slice(7,11);
+                var incluyeComa = anioFecha.includes(","); 
+                if(incluyeComa){
+                    anioFecha = fechas[index].slice(6,10);
+                    if(!anios.includes(anioFecha)){
+                        anios.push(anioFecha);
+                    }
+                }else{
+                    if(!anios.includes(anioFecha)){
+                        anios.push(anioFecha);
+                    }
                 }
             }
             for (let index = 1; index < anios.length; index++) {
