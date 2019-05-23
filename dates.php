@@ -1,7 +1,7 @@
 <?php
 include "conexion.php";
 
-$sql = "SELECT * from news_rss";
+$sql = "SELECT date from news_rss";
 $res = $cn->query($sql);
 
 $dates[] = array();

@@ -14,32 +14,37 @@
                     </tr>
                 ';        
 
+        try{
         $idList= ($_POST["id"]);
-        foreach($idList as $id) {
-            $sql= "SELECT * FROM news_rss WHERE id = $id";  
-            
-            $result = mysqli_query($cn,$sql);
-        
-            if(mysqli_num_rows($result)>0)
-            {
+            foreach($idList as $id) {
+                $sql= "SELECT id,title,date,description,link FROM news_rss WHERE id = $id";  
                 
-                while($row = mysqli_fetch_array($result))
+                $result = mysqli_query($cn,$sql);
+            
+                if(mysqli_num_rows($result)>0)
                 {
-                    $output .= '
-                        <tr>
-                            <td>'.$row["id"].'</td>
-                            <td>'.$row["title"].'</td>
-                            <td>'.$row["date"].'</td>
-                            <td>'.$row["description"].'</td>
-                            <td>'.$row["link"].'</td>
-                        </tr>
-                    ';
-                }
-                                                     
-            }            
+                    
+                    while($row = mysqli_fetch_array($result))
+                    {
+                        $output .= '
+                            <tr>
+                                <td>'.$row["id"].'</td>
+                                <td>'.$row["title"].'</td>
+                                <td>'.$row["date"].'</td>
+                                <td>'.$row["description"].'</td>
+                                <td>'.$row["link"].'</td>
+                            </tr>
+                        ';
+                    }
+                                                         
+                }            
+            }
+            $output .= '</table>';   
+            header("Content-Type: application/xls, charset=UTF-8");
+            header("Content-Disposition:attachment; filename= download.xls");
+            echo $output;
+        }catch(Exception $e){
+
         }
-        $output .= '</table>';   
-        header("Content-Type: application/xls, charset=UTF-8");
-        header("Content-Disposition:attachment; filename= download.xls");
-        echo $output;
+        
     }

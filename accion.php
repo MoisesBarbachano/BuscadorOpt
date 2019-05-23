@@ -5,7 +5,7 @@ if (isset($_POST['query'])) {
 
     $respuesta = mysqli_real_escape_string($cn, $_POST['query']);
     $data = array();
-    $sql = "SELECT * from news_rss WHERE title LIKE '%" . $respuesta . "%'";
+    $sql = "SELECT title from news_rss WHERE title LIKE '%" . $respuesta . "%'";
     $res = $cn->query($sql);
     if ($res->num_rows > 0) {
         while ($row = $res->fetch_assoc()) {
@@ -16,7 +16,7 @@ if (isset($_POST['query'])) {
 
 }
 if(isset($_POST['clave'])){
-    if ($resultado = $cn->query("SELECT * FROM news_rss WHERE date LIKE '%" . $_POST['clave'] . "%'")) {
+    if ($resultado = $cn->query("SELECT id, title, date, description, link FROM news_rss WHERE date LIKE '%" . $_POST['clave'] . "%'")) {
         $html = '<form id="principal" class="container-fluid" method="post" action="generarDocXls.php">';
         $html = $html . '<input type="submit" name="submit" class="btn btn-warning" value= "Exportar noticias seleccionadas">';
         while ($row = $resultado->fetch_assoc()) {
