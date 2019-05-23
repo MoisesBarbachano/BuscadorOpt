@@ -1,5 +1,5 @@
 <?php
-require_once('index.html');
+require_once('index.min.html');
 
 $mysqli = new mysqli("localhost", "root", "", "inforss");
 if ($mysqli->connect_errno) {

@@ -1,5 +1,4 @@
 <?php
-
 include "conexion.php";
 
 $sql = "SELECT * from news_rss";
